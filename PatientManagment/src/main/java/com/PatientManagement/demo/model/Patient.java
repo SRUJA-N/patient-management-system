@@ -1,6 +1,7 @@
-package com.PatientManagement.demo.model;
+package com.patientmanagement.demo.model;
 
 import java.time.LocalDate;
+
 import jakarta.persistence.Id;
 
 import jakarta.persistence.Column;
@@ -19,12 +20,13 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 @Entity
+public
 class Patient{
     
     @NotNull
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long UUID;
+    private Long id;
 
     @NotNull
     private String name;

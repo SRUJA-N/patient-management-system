@@ -1,13 +1,14 @@
-package com.PatientManagement.demo.repository;
+package com.patientmanagement.demo.repository;
 
-import org.hibernate.annotations.Parent;
+import java.util.UUID;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.fasterxml.jackson.annotation.JsonTypeInfo.Id;
+import com.patientmanagement.demo.model.Patient;
 
 @Repository
-public interface PatientRepository extends JpaRepository<Parent,Id>{
+public interface PatientRepository extends JpaRepository<Patient,UUID>{
     
     
 }
