@@ -1,4 +1,4 @@
-package com.PatientManagement.demo;
+package com.patientmanagement.demo;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
