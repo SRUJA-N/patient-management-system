@@ -1,5 +1,6 @@
 package com.patientmanagement.demo.mapper;
 
+import com.patientmanagement.demo.dto.PatientRequestDTO;
 import com.patientmanagement.demo.dto.PatientResponseDTO;
 import com.patientmanagement.demo.model.Patient;
 
@@ -15,6 +16,16 @@ public class PatientMapper {
     patientDto.setPriority(patient.getPriority());
     return patientDto;
     
+    }
+    
+    public static Patient toModel(PatientRequestDTO dto){
+        Patient patient = new Patient();
+        patient.setName(dto.getName());
+        patient.setEmail(dto.getEmail());
+        patient.setPhoneNumber(dto.getPhoneNumber());
+        patient.setPriority(dto.getPriority());
+        patient.setDateOfBirth(dto.getDateOfBirth());
+        return patient;
     }
     
 }
