@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import com.patientmanagement.demo.dto.PatientRequestDTO;
 import com.patientmanagement.demo.dto.PatientResponseDTO;
 import com.patientmanagement.demo.service.PatientService;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -26,7 +27,7 @@ class PatientController{
     }
     @PutMapping("/{id}")
     public ResponseEntity<PatientResponseDTO> updatePatient(@PathVariable Long id, @RequestBody PatientRequestDTO patientRequestDTO) {
-        patientResponseDTO patientResponseDTO=patientService.updatePatient(id, patientRequestDTO);
+        PatientResponseDTO patientResponseDTO=patientService.updatePatient(id, patientRequestDTO);
         return ResponseEntity.ok().body(patientResponseDTO);
     }
 
