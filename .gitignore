@@ -39,6 +39,9 @@ buildNumber.properties
 *.iml
 *.ipr
 out/
+# Secrets and Config
+application.properties
+.env
 
 # IDE - VS Code
 .vscode/

@@ -1,6 +1,9 @@
 package com.patientmanagement.demo.dto;
 
 import java.time.LocalDate;
+
+import com.patientmanagement.demo.dto.validation.CreatePatientValidationgroup;
+
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Min;
@@ -32,4 +35,6 @@ public class PatientRequestDTO {
 
     @NotNull
     private LocalDate dateOfBirth;
+    @NotNull(groups=CreatePatientValidationgroup.class,message="register date is required")
+    private LocalDate registerDate;
 }

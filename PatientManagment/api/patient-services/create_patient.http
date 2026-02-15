@@ -1,10 +1,11 @@
 POST http://localhost:4000/patient
 Content-Type: application/json
+
 {
-    "name":"Srujan",
-    "email":"codewithsrujan@email.com",
- "phoneNumber":"8310081087",
- "priority":"1",
- "dateOfBirth":"2006-07-21",
- "registerDate":"2024-02-02"
+    "name": "John Doe",
+    "email": "john.doe@example.com",
+    "phoneNumber": "1234567890",
+    "priority": 1,
+    "dateOfBirth": "1990-05-15",
+    "registerDate": "2026-02-15"
 }
