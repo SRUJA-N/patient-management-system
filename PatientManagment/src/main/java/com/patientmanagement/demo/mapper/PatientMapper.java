@@ -25,6 +25,7 @@ public class PatientMapper {
         patient.setPhoneNumber(dto.getPhoneNumber());
         patient.setPriority(dto.getPriority());
         patient.setDateOfBirth(dto.getDateOfBirth());
+        patient.setRegisterDate(dto.getRegisterDate());
         return patient;
     }
     
