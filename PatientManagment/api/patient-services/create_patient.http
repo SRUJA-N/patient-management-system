@@ -3,7 +3,7 @@ Content-Type: application/json
 
 {
     "name": "John Doe",
-    "email": "john.doe@example.com",
+    "email": "j@example.com",
     "phoneNumber": "1234567890",
     "priority": 1,
     "dateOfBirth": "1990-05-15",
