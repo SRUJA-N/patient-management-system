@@ -53,6 +53,13 @@ public class PatientController{
         PatientResponseDTO patientResponseDTO=patientService.createPatient(patientRequestDTO);
         return ResponseEntity.status(HttpStatus.CREATED).body(patientResponseDTO);
     }
+    @PostMapping
+    public ResponseEntity<PatientResponseDTO> dummy_data(@RequestBody PatientRequestDTO patientRequestDTO){
+         PatientResponseDTO patientResponseDTO=patientService.dummy_data(patientRequestDTO);
+         return ResponseEntity.status(HttpStatus.CREATED).body(patientResponseDTO);
+    }
+
+    
     
     @PutMapping("/{id}")
       @Operation(summary = "update patientsby id")

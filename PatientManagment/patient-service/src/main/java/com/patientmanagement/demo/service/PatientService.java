@@ -35,6 +35,13 @@ public class PatientService{
         Patient newPatient=patientRepository.save(PatientMapper.toModel(patientRequestDTO));
         return PatientMapper.toDto(newPatient);
     }
+     public PatientResponseDTO dummy_data(PatientRequestDTO patientRequestDTO){
+       if(patientRepository.existsByEmail(patientRequestDTO.getEmail())){
+            throw new EmailAlreadyExistException("A patient with this email already exists: "+patientRequestDTO.getEmail());
+        }
+        Patient newPatient=patientRepository.save(PatientMapper.toModel(patientRequestDTO));
+        return PatientMapper.toDto(newPatient);
+    }
     public PatientResponseDTO updatePatient(Long id, PatientRequestDTO patientRequestDTO){
 
         Patient patient =patientRepository.findById(id).orElseThrow(()->new PatientNotFoundException("patient not found with id "+id));
