@@ -1,4 +1,7 @@
-POST http://localhost:4000/patient
+POST http://localhost:4000/patient/dummy
+Content-Type: application/json
+
+{}
 
 
 
