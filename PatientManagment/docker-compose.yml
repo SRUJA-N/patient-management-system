@@ -39,6 +39,7 @@ services:
       SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/patient_db
       SPRING_DATASOURCE_USERNAME: admin
       SPRING_DATASOURCE_PASSWORD: password
+      BILLING_SERVICE_ADDRESS: billing-service:9001
     networks:
       - patient-network
 
