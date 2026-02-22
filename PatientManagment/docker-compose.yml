@@ -54,6 +54,66 @@ services:
       - patient-network
   # ------------------------------
 
+  # --- Zookeeper Service (required for Kafka) ---
+  zookeeper:
+    image: confluentinc/cp-zookeeper:7.5.0
+    container_name: zookeeper
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+    networks:
+      - patient-network
+  # ----------------------------------------------
+
+  # --- Kafka Broker Service ---
+  kafka:
+    image: confluentinc/cp-kafka:7.5.0
+    container_name: kafka
+    depends_on:
+      - zookeeper
+    ports:
+      - "9092:9092"
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:29092,PLAINTEXT_HOST://localhost:9092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+    networks:
+      - patient-network
+  # -----------------------------
+
+  # --- API Gateway ---
+  api-gateway:
+    build: ./api_gateway
+    container_name: api-gateway
+    ports:
+      - "4004:4004"
+    depends_on:
+      - patient-app
+    environment:
+      SPRING_CLOUD_GATEWAY_ROUTES_0_URI: http://patient-app:4000
+      SPRING_CLOUD_GATEWAY_ROUTES_1_URI: http://billing-service:9001
+    networks:
+      - patient-network
+  # -------------------
+
+  # --- Analytics Service ---
+  analytic-service:
+    build: ./analatic_service
+    container_name: analytic-service
+    ports:
+      - "4002:4002"
+    depends_on:
+      - kafka
+    environment:
+      SPRING_KAFKA_CONSUMER_BOOTSTRAP_SERVERS: kafka:29092
+      SPRING_KAFKA_CONSUMER_GROUP_ID: analytics-service
+    networks:
+      - patient-network
+  # ------------------------
+
 networks:
   patient-network:
     driver: bridge
