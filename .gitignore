@@ -49,3 +49,6 @@ application.properties
 # LocalStack & Docker
 .localstack/
 docker-compose.override.yml
+
+# Windows special file
+nul
